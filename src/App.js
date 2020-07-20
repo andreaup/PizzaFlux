@@ -18,9 +18,7 @@ class PizzaCalculator extends Component{
     this.state = CalculatorStore.getState();
     
     this.reset = this.reset.bind(this);
-    this.handleUpdateGuest = this.handleUpdateGuest.bind(this);
-    this.handleUpdatePiece = this.handleUpdatePiece.bind(this);
-    this.handleUpdateSlice = this.handleUpdateSlice.bind(this);
+    this.handlechange = this.handlechange.bind(this);
     this.updateState = this.updateState.bind(this);
 
 
@@ -43,14 +41,14 @@ class PizzaCalculator extends Component{
     actions.reset();
   };
 
-  handleUpdateGuest=(e)=>{
-    actions.handleInvitados(e.target.value);
-  }
-  handleUpdatePiece=(e)=>{
-    actions.handlePedazo(e.target.value);
-  }
-  handleUpdateSlice=(e)=>{
-    actions.handlePorcion(e.target.value);
+
+  handlechange=(e) =>{
+    const valor = e.target.value;
+    const nombre = e.target.name;
+    const objeto = {name:nombre, campo:valor};
+    console.log(1,objeto);
+
+    actions.handleChange(objeto);
   }
 
   render(){
@@ -73,7 +71,7 @@ class PizzaCalculator extends Component{
           name="invitado"
           type="number"
           placeholder="Ingrese el # de invitados"
-          onChange={this.handleUpdateGuest}
+          onChange={this.handlechange}
           value={invitado}
         />
         <br></br>
@@ -82,7 +80,7 @@ class PizzaCalculator extends Component{
           name="pedazo"
           type="number"
           placeholder="Ingrese el # de pedazos x persona"
-          onChange={this.handleUpdatePiece}
+          onChange={this.handlechange}
           value={pedazo}
         />
         <br></br>
@@ -91,7 +89,7 @@ class PizzaCalculator extends Component{
           name="porcion"
           type="number"
           placeholder="Ingrese el # de porciones x pizza"
-          onChange={this.handleUpdateSlice}
+          onChange={this.handlechange}
           value={porcion}
         />
 

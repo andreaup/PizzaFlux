@@ -6,24 +6,12 @@ import AppDispatcher from "./AppDispatcher";
         };
         AppDispatcher.dispatch(action);
     };
-    export const handleInvitados = value => {
+    export const handleChange = value => {
+        console.log(2,value)
         const action = {
-          type: "INVITADO",
-          value
-        };
-        AppDispatcher.dispatch(action);
-    };
-    export const handlePedazo = value => {
-        const action = {
-          type: "PEDAZO",
-          value
-        };
-        AppDispatcher.dispatch(action);
-    };
-    export const handlePorcion = value => {
-        const action = {
-          type: "PORCION",
-          value
+          type: "ONCHANGE",
+          campo: value.campo,
+          name: value.name
         };
         AppDispatcher.dispatch(action);
     };

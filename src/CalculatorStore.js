@@ -17,22 +17,14 @@ class CalculatorStore extends EventEmitter {
         super();
 
         AppDispatcher.register(action => {
-            console.log(action)
+            console.log(action,3);
             if (action.type === "RESET") {
                 calculator = { ...initialState };
                 this.emit("change");
               }
             
-            if(action.type ==="INVITADO"){
-                calculator.invitado = action.value;
-                this.emit("change")
-            }
-            if(action.type ==="PEDAZO"){
-                calculator.pedazo = action.value;
-                this.emit("change")
-            }
-            if(action.type ==="PORCION"){
-                calculator.porcion = action.value;
+            if(action.type ==="ONCHANGE"){
+                calculator[action.name] = action.campo;
                 this.emit("change")
             }
         });
